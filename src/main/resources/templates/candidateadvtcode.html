@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>PSC Rollno Generator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/stsm.css" th:href="@{/css/stsm.css}"/>
+</head>
+
+<body>
+<div>
+    <img src="../../images/psc_logo.png" alt="PSC logo" title="PSC logo" align="left"
+         th:src="@{images/psc_logo.png}" th:alt-title="#{title.application}"/>
+    <h1>Public Service Commission</h1>
+</div>
+<br>
+<h2>Search for Advertisement Code</h2>
+<div class="seedstarterlist">
+    <h2 >Generated Rollno</h2>
+    <table>
+        <thead>
+        <tr>
+            <!--
+                        <th >Id</th>
+            -->
+            <th >Advertisementcode</th>
+            <th >Max Rollno</th>
+            <th >Min Rollno</th>
+            <th >Total Count</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="iterator : ${advertisementcode1}">
+
+            <!--
+                        <td th:text="${iterator.id}"/>
+            -->
+            <td th:text="${iterator.advertisementcode}"/>
+            <td th:text="${iterator.maxrollno}"/>
+            <td th:text="${iterator.minrollno}"/>
+            <td th:text="${iterator.countrollno}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <table width="100%">
+        <thead>
+        <tr>
+            <th>Subjects</th>
+            <th>PaperType</th>
+            <th>PaperName</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr >
+            <td >
+                <select name="subjects">
+                    <option th:each="subjects:${subjectList}" th:text="${subjects}"/>
+                </select>
+            </td>
+        </tr>
+
+
+        ASSETTAG
+
+        <tr th:each="iterator : ${paperList}">
+
+            <td>
+                <select name="papersname">
+                    <option th:text="${iterator.papername}"/>
+                </select>
+            </td>
+
+            <td>
+                <select name="paperstype">
+                    <option th:text="${iterator.papertype}"/>
+                </select>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>

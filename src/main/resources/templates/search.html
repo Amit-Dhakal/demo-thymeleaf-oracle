@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>PSC Rollno Generator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/stsm.css" th:href="@{/css/stsm.css}"/>
+</head>
+
+<div>
+    <img src="../../images/psc_logo.png" alt="PSC logo" title="PSC logo" align="left"
+         th:src="@{images/psc_logo.png}" th:alt-title="#{title.application}"/>
+    <h1>Public Service Commission</h1>
+</div>
+<br>
+
+<div class="seedstarterlist">
+    <h2>Search for Advertisement Code</h2>
+    <form action="#" th:action="@{/candidateadvtcodeshow}" th:object="${candidateadvtcode}" method="post">
+        <input type="text" th:field="*{advertisementcode}" />
+        <button type="submit">Search</button>
+    </form>
+
+</div>
+</body>
+</HTML>

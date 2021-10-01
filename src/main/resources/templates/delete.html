@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:margin-left="http://java.sun.com/jsf/composite">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Public Service Commision Delete Candidate Details</title>
+ <!--   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/stsm.css" th:href="@{/css/stsm.css}"/>-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<Style>
+
+    .delbutton {
+        background-color: blue;
+        color: white;
+        border: 2px solid skyblue;
+        padding: 10px 20px;
+
+
+    }
+
+    .delbutton:hover {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .viewbutton {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: 2px solid skyblue;
+
+    }
+
+    .viewbutton:hover {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .submitbody{
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 10px;
+    }
+
+    .disctable{
+        margin-left:8px;
+        width: 50%;
+        border: 3px solid lightgreen;
+        padding: 2px;
+    }
+    .maintable{
+        margin-left:8px;
+        width: 50%;
+        border: 3px solid lightgreen;
+        padding: 2px;
+    }
+
+
+
+</Style>
+
+</head>
+
+
+<div  align="center">
+    <img src="../../images/psc_logo.png" alt="PSC logo" title="PSC logo"
+         th:src="@{images/psc_logo.png}" th:alt-title="#{title.application}"/>
+
+    <h1 style="color:blue;">Public Service Commission</h1>
+
+</div>
+
+<body>
+<div class="submitbody">
+    <form action="#" th:action="@{/searchdata}" th:object="${searchObj}" method="post" >
+       <p>   Student Master Id  :&emsp; <input type="text" th:field="*{studentmasterid}"/><br> </p>
+             Advertisement Code :  <input type="text" th:field="*{advertisementcode}"/>
+        &emsp;  <button class="viewbutton" type="submit">ViewAll</button>
+    </form>
+</div>
+
+<br>
+<br>
+
+<div th:each="iteratornext:${candidateList}">
+        <tbody>
+        <tr >
+            &emsp;  Master ID : <td th:text="${iteratornext.id}"></td>
+            <br>
+            &emsp;  Mobile Number: <td th:text="${iteratornext.mobileno}"/></td>
+            <br>
+            <br>
+        </tr>
+        </tbody>
+
+    <table class="disctable" width="700 pixel" border="1 px" bordercolor="LightSkyBlue">
+        <th>
+            First Name:
+        <td th:text="${iteratornext.firstName}"></td>
+        </th>
+
+        <th>
+            Middle Name:
+        <td th:text="${iteratornext.middleName}"></td>
+        </th>
+
+        <th>
+            Last Name:
+        <td th:text="${iteratornext.lastName}"></td>
+        </th>
+</table>
+
+</div>
+<br>
+    <div  th:each="iteratoradvtcode:${advtcodeList}" >
+    <table class="maintable" th:if = "${selectall}" width="1000 pixel" border="1 px" bordercolor="LightSkyBlue">
+        <thead>
+        <tr>
+            <th >ID</th>
+            <th >STUDENT MASTERID</th>
+            <th>ADVERTISEMENT CODE</th>
+            <th>POST NAME</th>
+            <th>CLASS NAME</th>
+            <th>GROUP NAME</th>
+            <th>SUB-GROUPNAME</th>
+            <th>SERVICE NAME</th>
+            <th>PAYMENT STATUS</th>
+        </tr>
+        </thead>
+
+
+    <tbody>
+
+        <tr th:each="iterator:${selectall}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.studentmasterid}"/></td>
+            <td th:text="${iterator.advertisementcode}"></td>
+            <td th:text="${iteratoradvtcode.postname}"/></td>
+            <td th:text="${iteratoradvtcode.classname}"/></td>
+            <td th:text="${iteratoradvtcode.groupname}"></td>
+            <td th:text="${iteratoradvtcode.subgroupname}"></td>
+            <td th:text="${iteratoradvtcode.servicename}"></td>
+            <td th:text="${iterator.paymentstatus}"></td>
+
+        </tr>
+        <tbody>
+
+        <tr th:each="iterator:${selectalladvtnumber}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.studentmasterid}"/></td>
+            <td th:text="${iterator.advertisementcode}"/></td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr th:each="iterator:${listExtraservices}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.masterid}"/></td>
+            <td th:text="${iterator.advertisementcode}"/></td>
+        </tr>
+        <tbody>
+        <tr th:each="iterator:${listRmispaymentlogs}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.studentmasterid}"/></td>
+            <td th:text="${iterator.advertisementcode}"/></td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr th:each="iterator:${listpaperdetail}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.studentmasterid}"/></td>
+            <td th:text="${iterator.advertisementcode}"/></td>
+        </tr>
+        </tbody>
+
+        <tbody>
+        <tr th:each="iterator:${candidateagainstadvtList}">
+            <td th:text="${iterator.id}"/></td>
+            <td th:text="${iterator.candidatemasterid}"/></td>
+            <td th:text="${iterator.advtcode}"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<div th:each="iterator:${selectall}">
+
+    <tr>
+        <td>
+            <form action="#" th:action="@{/deleteuser}" th:object="${searchObj}" method="post">
+                <input type="hidden" th:field="*{studentmasterid}" th:value = "${iterator.studentmasterid}">
+                <input type="hidden" th:field="*{advertisementcode}"  th:value = "${iterator.advertisementcode}">
+                <br>
+                <button class="delbutton" type="submit">Delete All</button>
+            </form>
+        </td>
+
+    </tr>
+</div>
+
+</body>
+</html>
+
+
+<!--
+ <td><a th:href="@{/deleteuser/__${iterator.studentmasterid}__}">Delete</a></td> -->
+<!-- <td> <a th:href="@{/deleteuser/{studentmasterid}/{advertisementcode}(studentmasterid=${iterator.studentmasterid},advertisementcode=${iterator.advertisementcode})}"><span>Delet‌​e</span></a>
+ </td>-->
+<!-- <td> <a th:href="@{/deleteuser/{studentmasterid}/(studentmasterid=${iterator.studentmasterid})}"><span>Delet‌​e</span></a>
+ </td>-->
